@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="20f05b984276448bb8e92be18551c7fe" Name="Diagram1">
+        <EntityTypeShape EntityType="LabLaErmitaModel.Categoria" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LabLaErmitaModel.DetalleVenta" Width="1.5" PointX="7.5" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="LabLaErmitaModel.Producto" Width="1.5" PointX="5.25" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LabLaErmitaModel.Rol" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LabLaErmitaModel.Usuario" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="LabLaErmitaModel.Venta" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="LabLaErmitaModel.fk_Producto_Categoria" ManuallyRouted="false" />
+        <AssociationConnector Association="LabLaErmitaModel.fk_DetalleVenta_Producto" ManuallyRouted="false" />
+        <AssociationConnector Association="LabLaErmitaModel.fk_DetalleVenta_Venta" ManuallyRouted="false" />
+        <AssociationConnector Association="LabLaErmitaModel.fk_Usuario_Rol" ManuallyRouted="false" />
+        <AssociationConnector Association="LabLaErmitaModel.fk_Venta_Usuario" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

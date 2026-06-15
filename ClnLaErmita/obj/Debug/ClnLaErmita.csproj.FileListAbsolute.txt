@@ -1,0 +1,15 @@
+D:\SIS457\Sis457LaErmita\ClnLaErmita\bin\Debug\ClnLaErmita.dll.config
+D:\SIS457\Sis457LaErmita\ClnLaErmita\bin\Debug\ClnLaErmita.dll
+D:\SIS457\Sis457LaErmita\ClnLaErmita\bin\Debug\ClnLaErmita.pdb
+D:\SIS457\Sis457LaErmita\ClnLaErmita\bin\Debug\CadLaErmita.dll
+D:\SIS457\Sis457LaErmita\ClnLaErmita\bin\Debug\EntityFramework.dll
+D:\SIS457\Sis457LaErmita\ClnLaErmita\bin\Debug\EntityFramework.SqlServer.dll
+D:\SIS457\Sis457LaErmita\ClnLaErmita\bin\Debug\CadLaErmita.pdb
+D:\SIS457\Sis457LaErmita\ClnLaErmita\bin\Debug\CadLaErmita.dll.config
+D:\SIS457\Sis457LaErmita\ClnLaErmita\bin\Debug\EntityFramework.xml
+D:\SIS457\Sis457LaErmita\ClnLaErmita\bin\Debug\EntityFramework.SqlServer.xml
+D:\SIS457\Sis457LaErmita\ClnLaErmita\obj\Debug\ClnLaErmita.csproj.AssemblyReference.cache
+D:\SIS457\Sis457LaErmita\ClnLaErmita\obj\Debug\ClnLaErmita.csproj.CoreCompileInputs.cache
+D:\SIS457\Sis457LaErmita\ClnLaErmita\obj\Debug\ClnLaErm.6FD86773.Up2Date
+D:\SIS457\Sis457LaErmita\ClnLaErmita\obj\Debug\ClnLaErmita.dll
+D:\SIS457\Sis457LaErmita\ClnLaErmita\obj\Debug\ClnLaErmita.pdb

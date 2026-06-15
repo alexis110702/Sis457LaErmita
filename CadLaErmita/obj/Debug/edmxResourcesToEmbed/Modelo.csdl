@@ -1,0 +1,222 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LabLaErmitaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Categoria">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="descripcion" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="estado" Type="Int16" Nullable="false" />
+    <NavigationProperty Name="Producto" Relationship="Self.fk_Producto_Categoria" FromRole="Categoria" ToRole="Producto" />
+  </EntityType>
+  <EntityType Name="DetalleVenta">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idVenta" Type="Int32" Nullable="false" />
+    <Property Name="idProducto" Type="Int32" Nullable="false" />
+    <Property Name="cantidad" Type="Int32" Nullable="false" />
+    <Property Name="precio" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="subtotal" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="estado" Type="Int16" Nullable="false" />
+    <NavigationProperty Name="Producto" Relationship="Self.fk_DetalleVenta_Producto" FromRole="DetalleVenta" ToRole="Producto" />
+    <NavigationProperty Name="Venta" Relationship="Self.fk_DetalleVenta_Venta" FromRole="DetalleVenta" ToRole="Venta" />
+  </EntityType>
+  <EntityType Name="Producto">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idCategoria" Type="Int32" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="precio" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="stock" Type="Int32" Nullable="false" />
+    <Property Name="estado" Type="Int16" Nullable="false" />
+    <NavigationProperty Name="Categoria" Relationship="Self.fk_Producto_Categoria" FromRole="Producto" ToRole="Categoria" />
+    <NavigationProperty Name="DetalleVenta" Relationship="Self.fk_DetalleVenta_Producto" FromRole="Producto" ToRole="DetalleVenta" />
+  </EntityType>
+  <EntityType Name="Rol">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="estado" Type="Int16" Nullable="false" />
+    <NavigationProperty Name="Usuario" Relationship="Self.fk_Usuario_Rol" FromRole="Rol" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idRol" Type="Int32" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="usuario1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="contrasena" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="estado" Type="Int16" Nullable="false" />
+    <NavigationProperty Name="Rol" Relationship="Self.fk_Usuario_Rol" FromRole="Usuario" ToRole="Rol" />
+    <NavigationProperty Name="Venta" Relationship="Self.fk_Venta_Usuario" FromRole="Usuario" ToRole="Venta" />
+  </EntityType>
+  <EntityType Name="Venta">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idUsuario" Type="Int32" Nullable="false" />
+    <Property Name="mesa" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="total" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="estado" Type="Int16" Nullable="false" />
+    <NavigationProperty Name="DetalleVenta" Relationship="Self.fk_DetalleVenta_Venta" FromRole="Venta" ToRole="DetalleVenta" />
+    <NavigationProperty Name="Usuario" Relationship="Self.fk_Venta_Usuario" FromRole="Venta" ToRole="Usuario" />
+  </EntityType>
+  <Association Name="fk_Producto_Categoria">
+    <End Role="Categoria" Type="Self.Categoria" Multiplicity="1" />
+    <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categoria">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Producto">
+        <PropertyRef Name="idCategoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_DetalleVenta_Producto">
+    <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+    <End Role="DetalleVenta" Type="Self.DetalleVenta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Producto">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="DetalleVenta">
+        <PropertyRef Name="idProducto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_DetalleVenta_Venta">
+    <End Role="Venta" Type="Self.Venta" Multiplicity="1" />
+    <End Role="DetalleVenta" Type="Self.DetalleVenta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Venta">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="DetalleVenta">
+        <PropertyRef Name="idVenta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Usuario_Rol">
+    <End Role="Rol" Type="Self.Rol" Multiplicity="1" />
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rol">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="idRol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Venta_Usuario">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="Venta" Type="Self.Venta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Venta">
+        <PropertyRef Name="idUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="LabLaErmitaEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Categoria" EntityType="Self.Categoria" />
+    <EntitySet Name="DetalleVenta" EntityType="Self.DetalleVenta" />
+    <EntitySet Name="Producto" EntityType="Self.Producto" />
+    <EntitySet Name="Rol" EntityType="Self.Rol" />
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+    <EntitySet Name="Venta" EntityType="Self.Venta" />
+    <AssociationSet Name="fk_Producto_Categoria" Association="Self.fk_Producto_Categoria">
+      <End Role="Categoria" EntitySet="Categoria" />
+      <End Role="Producto" EntitySet="Producto" />
+    </AssociationSet>
+    <AssociationSet Name="fk_DetalleVenta_Producto" Association="Self.fk_DetalleVenta_Producto">
+      <End Role="Producto" EntitySet="Producto" />
+      <End Role="DetalleVenta" EntitySet="DetalleVenta" />
+    </AssociationSet>
+    <AssociationSet Name="fk_DetalleVenta_Venta" Association="Self.fk_DetalleVenta_Venta">
+      <End Role="Venta" EntitySet="Venta" />
+      <End Role="DetalleVenta" EntitySet="DetalleVenta" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Usuario_Rol" Association="Self.fk_Usuario_Rol">
+      <End Role="Rol" EntitySet="Rol" />
+      <End Role="Usuario" EntitySet="Usuario" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Venta_Usuario" Association="Self.fk_Venta_Usuario">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Venta" EntitySet="Venta" />
+    </AssociationSet>
+    <FunctionImport Name="paCategoriaListar" ReturnType="Collection(LabLaErmitaModel.paCategoriaListar_Result)">
+      <Parameter Name="parametro" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="paDetalleVentaListar" ReturnType="Collection(LabLaErmitaModel.paDetalleVentaListar_Result)">
+      <Parameter Name="idVenta" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="paProductoListar" ReturnType="Collection(LabLaErmitaModel.paProductoListar_Result)">
+      <Parameter Name="parametro" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="paUsuarioLogin" ReturnType="Collection(LabLaErmitaModel.paUsuarioLogin_Result)">
+      <Parameter Name="usuario" Mode="In" Type="String" />
+      <Parameter Name="contrasena" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="paVentaListar" ReturnType="Collection(LabLaErmitaModel.paVentaListar_Result)">
+      <Parameter Name="parametro" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="paCategoriaListar_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="nombre" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="descripcion" Nullable="false" MaxLength="150" />
+    <Property Type="Int16" Name="estado" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="paDetalleVentaListar_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="Int32" Name="idVenta" Nullable="false" />
+    <Property Type="Int32" Name="idProducto" Nullable="false" />
+    <Property Type="String" Name="producto" Nullable="false" MaxLength="100" />
+    <Property Type="Int32" Name="cantidad" Nullable="false" />
+    <Property Type="Decimal" Name="precio" Nullable="false" Precision="10" Scale="2" />
+    <Property Type="Decimal" Name="subtotal" Nullable="false" Precision="10" Scale="2" />
+    <Property Type="Int16" Name="estado" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="paProductoListar_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="Int32" Name="idCategoria" Nullable="false" />
+    <Property Type="String" Name="nombre" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="descripcion" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="categoria" Nullable="false" MaxLength="50" />
+    <Property Type="Decimal" Name="precio" Nullable="false" Precision="10" Scale="2" />
+    <Property Type="Int32" Name="stock" Nullable="false" />
+    <Property Type="Int16" Name="estado" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="paUsuarioLogin_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="Int32" Name="idRol" Nullable="false" />
+    <Property Type="String" Name="nombre" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="usuario" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="rol" Nullable="false" MaxLength="30" />
+  </ComplexType>
+  <ComplexType Name="paVentaListar_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="Int32" Name="idUsuario" Nullable="false" />
+    <Property Type="String" Name="mesa" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="cajero" Nullable="false" MaxLength="100" />
+    <Property Type="DateTime" Name="fecha" Nullable="false" Precision="23" />
+    <Property Type="Decimal" Name="total" Nullable="false" Precision="10" Scale="2" />
+    <Property Type="Int16" Name="estado" Nullable="false" />
+  </ComplexType>
+</Schema>

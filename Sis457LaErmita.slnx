@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="CadLaErmita\CadLaErmita.csproj" Id="aa000001-0001-0001-0001-000000000001" />
+  <Project Path="ClnLaErmita\ClnLaErmita.csproj" Id="bb000002-0002-0002-0002-000000000002" />
+  <Project Path="CpLaErmita\CpLaErmita.csproj" Id="cc000003-0003-0003-0003-000000000003" />
+</Solution>

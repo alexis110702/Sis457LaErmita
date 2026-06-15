@@ -1,0 +1,12 @@
+D:\SIS457\Sis457LaErmita\CadLaErmita\bin\Debug\CadLaErmita.dll.config
+D:\SIS457\Sis457LaErmita\CadLaErmita\bin\Debug\CadLaErmita.dll
+D:\SIS457\Sis457LaErmita\CadLaErmita\bin\Debug\CadLaErmita.pdb
+D:\SIS457\Sis457LaErmita\CadLaErmita\bin\Debug\EntityFramework.dll
+D:\SIS457\Sis457LaErmita\CadLaErmita\bin\Debug\EntityFramework.SqlServer.dll
+D:\SIS457\Sis457LaErmita\CadLaErmita\bin\Debug\EntityFramework.xml
+D:\SIS457\Sis457LaErmita\CadLaErmita\bin\Debug\EntityFramework.SqlServer.xml
+D:\SIS457\Sis457LaErmita\CadLaErmita\obj\Debug\CadLaErmita.csproj.AssemblyReference.cache
+D:\SIS457\Sis457LaErmita\CadLaErmita\obj\Debug\CadLaErmita.csproj.CoreCompileInputs.cache
+D:\SIS457\Sis457LaErmita\CadLaErmita\obj\Debug\CadLaErm.3C00FF61.Up2Date
+D:\SIS457\Sis457LaErmita\CadLaErmita\obj\Debug\CadLaErmita.dll
+D:\SIS457\Sis457LaErmita\CadLaErmita\obj\Debug\CadLaErmita.pdb
